@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:pokedex_egsys/core/injection/injector.dart';
-import 'package:pokedex_egsys/features/home/presenter/pages/home_page.dart';
+import 'package:pokedex_egsys/features/pokedex/presenter/pages/home/home_page.dart';
 
 void main() {
   setupInjector();

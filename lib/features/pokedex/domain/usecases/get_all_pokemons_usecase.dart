@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import 'package:pokedex_egsys/core/usecase/usecase.dart';
-import 'package:pokedex_egsys/features/home/domain/entities/pokemon_entity.dart';
-import 'package:pokedex_egsys/features/home/domain/repositories/pokemon_repository.dart';
+import 'package:pokedex_egsys/features/pokedex/domain/entities/pokemon_entity.dart';
+import 'package:pokedex_egsys/features/pokedex/domain/repositories/pokemon_repository.dart';
 
 class GetPokemonsParams {
   final int page;

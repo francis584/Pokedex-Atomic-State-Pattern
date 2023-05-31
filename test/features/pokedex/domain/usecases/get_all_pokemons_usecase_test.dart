@@ -2,9 +2,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
 import 'package:pokedex_egsys/core/error/failure.dart';
-import 'package:pokedex_egsys/features/home/domain/entities/pokemon_entity.dart';
-import 'package:pokedex_egsys/features/home/domain/repositories/pokemon_repository.dart';
-import 'package:pokedex_egsys/features/home/domain/usecases/get_all_pokemons_usecase.dart';
+import 'package:pokedex_egsys/features/pokedex/domain/entities/pokemon_entity.dart';
+import 'package:pokedex_egsys/features/pokedex/domain/repositories/pokemon_repository.dart';
+import 'package:pokedex_egsys/features/pokedex/domain/usecases/get_all_pokemons_usecase.dart';
 
 import '../../fixtures/home_fixtures.dart';
 

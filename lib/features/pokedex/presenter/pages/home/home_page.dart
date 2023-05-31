@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:pokedex_egsys/core/injection/injector.dart';
-import 'package:pokedex_egsys/features/home/domain/entities/pokemon_entity.dart';
-import 'package:pokedex_egsys/features/home/infra/repositories/pokemon_repository_impl.dart';
-import 'package:pokedex_egsys/features/home/presenter/pages/widgets/home_error.dart';
-import 'package:pokedex_egsys/features/home/presenter/pages/widgets/home_loading.dart';
-import 'package:pokedex_egsys/features/home/presenter/pages/widgets/pokemon_item_widget.dart';
+import 'package:pokedex_egsys/features/pokedex/domain/entities/pokemon_entity.dart';
+import 'package:pokedex_egsys/features/pokedex/infra/repositories/pokemon_repository_impl.dart';
+import 'package:pokedex_egsys/features/pokedex/presenter/pages/home/widgets/home_error.dart';
+import 'package:pokedex_egsys/features/pokedex/presenter/pages/home/widgets/home_loading.dart';
+import 'package:pokedex_egsys/features/pokedex/presenter/pages/home/widgets/pokemon_item_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

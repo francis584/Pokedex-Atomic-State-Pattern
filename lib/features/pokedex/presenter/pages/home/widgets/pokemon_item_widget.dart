@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:pokedex_egsys/core/utils/mappers/color_to_type_mapper.dart';
-import 'package:pokedex_egsys/features/home/domain/entities/pokemon_entity.dart';
-import 'package:pokedex_egsys/features/home/presenter/pages/widgets/type_widget.dart';
+import 'package:pokedex_egsys/features/pokedex/domain/entities/pokemon_entity.dart';
+import 'package:pokedex_egsys/features/pokedex/presenter/pages/home/widgets/type_widget.dart';
 
 class PokemonItemWidget extends StatelessWidget {
   final PokemonEntity pokemonEntity;

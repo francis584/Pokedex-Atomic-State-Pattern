@@ -74,6 +74,7 @@ class Sprites {
     if (this.other != null) {
       data['other'] = this.other!.toJson();
     }
+
     return data;
   }
 
@@ -161,6 +162,7 @@ class Types {
     if (this.type != null) {
       data['type'] = this.type!.toJson();
     }
+
     return data;
   }
 
@@ -196,6 +198,7 @@ class Type {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['name'] = this.name;
     data['url'] = this.url;
+
     return data;
   }
 

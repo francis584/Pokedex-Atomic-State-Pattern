@@ -2,10 +2,10 @@ import 'package:uno/uno.dart';
 
 import 'package:pokedex_egsys/core/error/failure.dart';
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:pokedex_egsys/features/home/domain/entities/pokemon_entity.dart';
-import 'package:pokedex_egsys/features/home/domain/repositories/pokemon_repository.dart';
-import 'package:pokedex_egsys/features/home/infra/mappers/api_to_entity_mapper.dart';
-import 'package:pokedex_egsys/features/home/infra/models/pokemon_model.dart';
+import 'package:pokedex_egsys/features/pokedex/domain/entities/pokemon_entity.dart';
+import 'package:pokedex_egsys/features/pokedex/domain/repositories/pokemon_repository.dart';
+import 'package:pokedex_egsys/features/pokedex/infra/mappers/api_to_entity_mapper.dart';
+import 'package:pokedex_egsys/features/pokedex/infra/models/pokemon_model.dart';
 
 class PokemonRepositoryImpl implements PokemonRepository {
   final Uno uno;
