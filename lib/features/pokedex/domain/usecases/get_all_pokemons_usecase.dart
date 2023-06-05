@@ -10,7 +10,7 @@ class GetPokemonsParams {
 
   const GetPokemonsParams({
     required this.page,
-    required this.limit,
+    this.limit = 20,
   });
 }
 

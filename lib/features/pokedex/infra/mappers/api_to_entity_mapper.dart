@@ -6,6 +6,7 @@ extension PokemonModelX on PokemonModel {
   PokemonEntity toEntity() => PokemonEntity(
       id: id,
       name: name,
-      image: sprites.other!.dreamWorld!.frontDefault!,
+      image:
+          sprites.other!.dreamWorld!.frontDefault ?? 'assets/svg/not-found.svg',
       type: types.map((e) => e.type!.name!.capitalize()).toList());
 }
