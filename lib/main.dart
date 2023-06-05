@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:asp/asp.dart';
 
 import 'package:pokedex_egsys/core/injection/injector.dart';
-import 'package:pokedex_egsys/features/pokedex/presenter/pages/home/home_page.dart';
+import 'package:pokedex_egsys/core/routes/routes.dart';
 
 void main() {
   setupInjector();
@@ -15,13 +15,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Pokedex egSYS',
       theme: ThemeData(
         primarySwatch: Colors.red,
         useMaterial3: false,
       ),
-      home: HomePage(),
+      routerDelegate: routes.routerDelegate,
+      routeInformationParser: routes.routeInformationParser,
+      routeInformationProvider: routes.routeInformationProvider,
     );
   }
 }
