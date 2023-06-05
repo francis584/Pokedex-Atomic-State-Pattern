@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
+import 'package:asp/asp.dart';
+
 import 'package:pokedex_egsys/core/injection/injector.dart';
 import 'package:pokedex_egsys/features/pokedex/presenter/pages/home/home_page.dart';
 
 void main() {
   setupInjector();
-  runApp(const MyApp());
+  runApp(RxRoot(child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

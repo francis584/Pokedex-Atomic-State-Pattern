@@ -39,6 +39,7 @@ dependencies:
   uno: ^1.1.8
   auto_injector: ^1.0.2+2
   flutter_svg: ^2.0.6
+  asp: ^1.0.3
 
 dev_dependencies:
   flutter_lints: ^2.0.1
