@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shimmer/shimmer.dart';
 
 import 'package:pokedex_egsys/core/utils/mappers/color_to_type_mapper.dart';
 import 'package:pokedex_egsys/features/pokedex/domain/entities/pokemon_entity.dart';
@@ -73,17 +74,34 @@ class PokemonItemWidget extends StatelessWidget {
           bottom: 12,
           right: 8,
           left: 48,
-          child: SvgPicture.network(
-            pokemonEntity.image,
-            semanticsLabel: pokemonEntity.name,
-            width: 110,
-            height: 110,
-            fit: BoxFit.contain,
-            placeholderBuilder: (context) => Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: CircularProgressIndicator.adaptive(),
-            ),
-          ),
+          child: pokemonEntity.image.contains('assets')
+              ? SvgPicture.asset(
+                  pokemonEntity.image,
+                  semanticsLabel: pokemonEntity.name,
+                  width: 110,
+                  height: 110,
+                  fit: BoxFit.contain,
+                  color: Colors.white,
+                )
+              : SvgPicture.network(
+                  pokemonEntity.image,
+                  semanticsLabel: pokemonEntity.name,
+                  width: 110,
+                  height: 110,
+                  fit: BoxFit.contain,
+                  placeholderBuilder: (context) => Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Shimmer.fromColors(
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.4),
+                                borderRadius: BorderRadius.circular(16)),
+                            width: 100,
+                            height: 100,
+                          ),
+                          baseColor: Colors.white.withOpacity(0.4),
+                          highlightColor: Colors.grey[300]!)),
+                ),
         ),
       ],
     );
