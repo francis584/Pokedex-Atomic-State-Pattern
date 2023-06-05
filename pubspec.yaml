@@ -41,6 +41,7 @@ dependencies:
   flutter_svg: ^2.0.6
   asp: ^1.0.3
   shimmer: ^3.0.0
+  fluttertoast: ^8.2.2
 
 dev_dependencies:
   flutter_lints: ^2.0.1
