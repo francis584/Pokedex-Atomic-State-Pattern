@@ -117,7 +117,7 @@ class BaseStatsWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: loading
-                  ? ShimmerWidget(width: 180)
+                  ? ShimmerWidget(width: 20)
                   : Text(
                       '${pokemonDetailsEntity!.stats['hp']}',
                       style: TextStyle(
@@ -129,7 +129,7 @@ class BaseStatsWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: loading
-                  ? ShimmerWidget(width: 180)
+                  ? ShimmerWidget(width: 20)
                   : Text(
                       '${pokemonDetailsEntity!.stats['attack']}',
                       style: TextStyle(
@@ -141,7 +141,7 @@ class BaseStatsWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: loading
-                  ? ShimmerWidget(width: 180)
+                  ? ShimmerWidget(width: 20)
                   : Text(
                       '${pokemonDetailsEntity!.stats['defense']}',
                       style: TextStyle(
@@ -153,7 +153,7 @@ class BaseStatsWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: loading
-                  ? ShimmerWidget(width: 180)
+                  ? ShimmerWidget(width: 20)
                   : Text(
                       '${pokemonDetailsEntity!.stats['special-attack']}',
                       style: TextStyle(
@@ -165,7 +165,7 @@ class BaseStatsWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: loading
-                  ? ShimmerWidget(width: 180)
+                  ? ShimmerWidget(width: 20)
                   : Text(
                       '${pokemonDetailsEntity!.stats['special-defense']}',
                       style: TextStyle(
@@ -177,7 +177,7 @@ class BaseStatsWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: loading
-                  ? ShimmerWidget(width: 180)
+                  ? ShimmerWidget(width: 20)
                   : Text(
                       '${pokemonDetailsEntity!.stats['speed']}',
                       style: TextStyle(
@@ -189,7 +189,7 @@ class BaseStatsWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: loading
-                  ? ShimmerWidget(width: 180)
+                  ? ShimmerWidget(width: 20)
                   : Text(
                       '${pokemonDetailsEntity!.stats.values.reduce((previousValue, element) => previousValue + element)}',
                       style: TextStyle(
@@ -202,12 +202,15 @@ class BaseStatsWidget extends StatelessWidget {
         ),
         Column(
           children: [
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 13),
-              child: loading
-                  ? ShimmerWidget(width: 180)
-                  : SizedBox(
+            loading
+                ? Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ShimmerWidget(width: 180),
+                  )
+                : Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0, vertical: 13),
+                    child: SizedBox(
                       width: 180,
                       child: LinearProgressIndicator(
                         color: _progressBarColor(
@@ -217,13 +220,16 @@ class BaseStatsWidget extends StatelessWidget {
                             100),
                       ),
                     ),
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 13),
-              child: loading
-                  ? ShimmerWidget(width: 180)
-                  : SizedBox(
+                  ),
+            loading
+                ? Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ShimmerWidget(width: 180),
+                  )
+                : Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0, vertical: 13),
+                    child: SizedBox(
                       width: 180,
                       child: LinearProgressIndicator(
                         color: _progressBarColor(
@@ -234,13 +240,16 @@ class BaseStatsWidget extends StatelessWidget {
                                 100),
                       ),
                     ),
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 13),
-              child: loading
-                  ? ShimmerWidget(width: 180)
-                  : SizedBox(
+                  ),
+            loading
+                ? Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ShimmerWidget(width: 180),
+                  )
+                : Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0, vertical: 13),
+                    child: SizedBox(
                       width: 180,
                       child: LinearProgressIndicator(
                         color: _progressBarColor(
@@ -251,13 +260,16 @@ class BaseStatsWidget extends StatelessWidget {
                             100),
                       ),
                     ),
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 13),
-              child: loading
-                  ? ShimmerWidget(width: 180)
-                  : SizedBox(
+                  ),
+            loading
+                ? Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ShimmerWidget(width: 180),
+                  )
+                : Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0, vertical: 13),
+                    child: SizedBox(
                       width: 180,
                       child: LinearProgressIndicator(
                         color: _progressBarColor(pokemonDetailsEntity!
@@ -269,13 +281,16 @@ class BaseStatsWidget extends StatelessWidget {
                             100),
                       ),
                     ),
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 13),
-              child: loading
-                  ? ShimmerWidget(width: 180)
-                  : SizedBox(
+                  ),
+            loading
+                ? Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ShimmerWidget(width: 180),
+                  )
+                : Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0, vertical: 13),
+                    child: SizedBox(
                       width: 180,
                       child: LinearProgressIndicator(
                         color: _progressBarColor(pokemonDetailsEntity!
@@ -287,13 +302,16 @@ class BaseStatsWidget extends StatelessWidget {
                             100),
                       ),
                     ),
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 13),
-              child: loading
-                  ? ShimmerWidget(width: 180)
-                  : SizedBox(
+                  ),
+            loading
+                ? Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ShimmerWidget(width: 180),
+                  )
+                : Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0, vertical: 13),
+                    child: SizedBox(
                       width: 180,
                       child: LinearProgressIndicator(
                         color: _progressBarColor(
@@ -304,13 +322,16 @@ class BaseStatsWidget extends StatelessWidget {
                                 100),
                       ),
                     ),
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 13),
-              child: loading
-                  ? ShimmerWidget(width: 180)
-                  : SizedBox(
+                  ),
+            loading
+                ? Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ShimmerWidget(width: 180),
+                  )
+                : Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0, vertical: 13),
+                    child: SizedBox(
                       width: 180,
                       child: LinearProgressIndicator(
                         color: _progressBarColor(pokemonDetailsEntity!
@@ -327,7 +348,7 @@ class BaseStatsWidget extends StatelessWidget {
                             600,
                       ),
                     ),
-            ),
+                  ),
           ],
         ),
       ],
