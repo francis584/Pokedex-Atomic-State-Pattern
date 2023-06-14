@@ -106,6 +106,7 @@ class _DetailsPageState extends State<DetailsPage>
                   }
 
                   detailsPokemonSelected.setValue(pokemon);
+                  fetchDetailsById.setValue(pokemon.id);
                 },
                 itemBuilder: (context, index) {
                   final pokemon = homePokemonsList[index];
