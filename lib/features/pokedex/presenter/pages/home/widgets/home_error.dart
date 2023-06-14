@@ -23,6 +23,7 @@ class HomeError extends StatelessWidget {
             width: 110,
             height: 110,
             fit: BoxFit.contain,
+            // ignore: deprecated_member_use
             color: Colors.black,
           ),
           Wrap(children: [
