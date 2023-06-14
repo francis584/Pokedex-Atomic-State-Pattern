@@ -11,6 +11,7 @@ import 'package:pokedex_egsys/features/pokedex/presenter/atoms/details_atom.dart
 import 'package:pokedex_egsys/features/pokedex/presenter/atoms/home_atom.dart';
 import 'package:pokedex_egsys/features/pokedex/presenter/pages/details/widgets/about_widget.dart';
 import 'package:pokedex_egsys/features/pokedex/presenter/pages/details/widgets/base_stats_widget.dart';
+import 'package:pokedex_egsys/features/pokedex/presenter/pages/details/widgets/error_widget.dart';
 import 'package:pokedex_egsys/features/pokedex/presenter/pages/home/widgets/type_widget.dart';
 
 class DetailsPage extends StatefulWidget {
@@ -253,24 +254,5 @@ class _DetailsPageState extends State<DetailsPage>
         ],
       ),
     );
-  }
-}
-
-class DetailsErrorWidget extends StatelessWidget {
-  final String message;
-  const DetailsErrorWidget({
-    Key? key,
-    required this.message,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-        child: SizedBox(
-            width: 250,
-            child: Text(
-              message,
-              textAlign: TextAlign.center,
-            )));
   }
 }
