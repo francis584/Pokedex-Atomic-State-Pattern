@@ -1,0 +1,8 @@
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/pokedex-icon.png"
+  background_color: "#ffffff"
+  adaptive_icon_background: "assets/images/background.png" # only available for Android 8.0 devices and above
+  adaptive_icon_foreground: "assets/images/pokedex-icon12.png" # only available for Android 8.0 devices and above
+  remove_alpha_ios: true
