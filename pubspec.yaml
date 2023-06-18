@@ -65,8 +65,8 @@ dev_dependencies:
   mocktail: ^0.3.0
 
 flutter_native_splash:
-  color: "#f3f3f3"
-  image: "assets/images/pokedex_splash.png"
+  color: "#f94a48"
+  image: "assets/images/pokedex_logo.png"
   android: true
   ios: true
 
