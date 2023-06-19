@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import 'package:pokedex_egsys/features/pokedex/presenter/pages/onBoarding/widgets/intro_1_widget.dart';
@@ -28,6 +29,12 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   void dispose() {
     _pageController.dispose();
     super.dispose();
+  }
+
+  Future<void> _getStarted() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool('onBoarding', true);
+    context.pushReplacement('/home');
   }
 
   @override
@@ -79,7 +86,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                             fontSize: 12,
                             fontFamily: 'Pokemongb'),
                       ),
-                      onTap: () => context.pushReplacement('/home'))
+                      onTap: _getStarted)
                   : GestureDetector(
                       child: Text(
                         'Próximo'.toUpperCase(),
