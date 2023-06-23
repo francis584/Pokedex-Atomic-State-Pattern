@@ -3,6 +3,7 @@ import 'package:uno/uno.dart';
 
 import 'package:pokedex_egsys/core/constants/api_constants.dart';
 import 'package:pokedex_egsys/features/pokedex/domain/usecases/get_all_pokemons_usecase.dart';
+import 'package:pokedex_egsys/features/pokedex/domain/usecases/get_all_types_usecase.dart';
 import 'package:pokedex_egsys/features/pokedex/domain/usecases/get_pokemon_details_by_id_usecase.dart';
 import 'package:pokedex_egsys/features/pokedex/infra/repositories/pokemon_repository_impl.dart';
 import 'package:pokedex_egsys/features/pokedex/presenter/reducers/details_reducer.dart';
@@ -15,6 +16,8 @@ setupInjector() {
   autoInjector.add(() => GetAllPokemonsUsecase(
       pokemonRepository: autoInjector<PokemonRepositoryImpl>()));
   autoInjector.add(() => GetPokemonDetailsByIdUsecase(
+      pokemonRepository: autoInjector<PokemonRepositoryImpl>()));
+  autoInjector.add(() => GetAllTypesUsecase(
       pokemonRepository: autoInjector<PokemonRepositoryImpl>()));
   autoInjector.addSingleton(HomeReducer.new);
   autoInjector.addSingleton(DetailsReducer.new);

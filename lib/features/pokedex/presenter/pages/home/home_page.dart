@@ -7,6 +7,8 @@ import 'package:pokedex_egsys/features/pokedex/presenter/atoms/home_atom.dart';
 import 'package:pokedex_egsys/features/pokedex/presenter/pages/home/widgets/home_error.dart';
 import 'package:pokedex_egsys/features/pokedex/presenter/pages/home/widgets/home_loading.dart';
 import 'package:pokedex_egsys/features/pokedex/presenter/pages/home/widgets/pokemon_item_widget.dart';
+import 'package:pokedex_egsys/features/pokedex/presenter/pages/home/widgets/search_pokemon_by_name_widget.dart';
+import 'package:pokedex_egsys/features/pokedex/presenter/pages/home/widgets/types_choice_chips_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -17,10 +19,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final ScrollController scrollController = ScrollController();
+  final TextEditingController textEditingController = TextEditingController();
   @override
   void initState() {
     super.initState();
     initialfetch();
+    fetchTypes();
 
     scrollController.addListener(() {
       if (!homePokemonsListFinished.value &&
@@ -45,10 +49,62 @@ class _HomePageState extends State<HomePage> {
         toastLength: Toast.LENGTH_LONG,
       );
 
+  _openSearchMenu(BuildContext context) {
+    showModalBottomSheet(
+        context: context,
+        useRootNavigator: true,
+        useSafeArea: true,
+        showDragHandle: true,
+        isScrollControlled: true,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(16),
+          topRight: Radius.circular(16),
+        )),
+        builder: (context) {
+          return SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.only(
+                  bottom: MediaQuery.viewInsetsOf(context).bottom),
+              child: Wrap(
+                children: [
+                  SearchPokemonByNameWidget(
+                      textEditingController: textEditingController),
+                  TypesChoiceChipsWidget(),
+                  Padding(
+                    padding: const EdgeInsets.all(24),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Expanded(
+                          child: OutlinedButton(
+                            onPressed: () {},
+                            child: Text('Limpar'),
+                            style: ButtonStyle(),
+                          ),
+                        ),
+                        SizedBox(width: 24),
+                        Expanded(
+                            child: ElevatedButton(
+                                onPressed: () {}, child: Text('Buscar'))),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
-    context.select(() =>
-        [homeLoading, homePokemonsListFinished, homeError, homePokemonsList]);
+    context.select(() => [
+          homeLoading,
+          homePokemonsListFinished,
+          homeError,
+          homePokemonsList,
+        ]);
 
     if (homePokemonsListFinished.value) mostrarToast('Sem mais resultados');
 
@@ -61,14 +117,15 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.only(left: 10),
             child: Text(
               'Pokedex',
-              style: TextStyle(color: Colors.black, fontSize: 26),
+              style: TextStyle(
+                  color: Colors.black, fontSize: 32, fontFamily: 'Pocket_Monk'),
             ),
           ),
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 10),
               child: IconButton(
-                  onPressed: () {},
+                  onPressed: () => _openSearchMenu(context),
                   icon: Icon(
                     Icons.search,
                     color: Colors.black,
@@ -85,6 +142,7 @@ class _HomePageState extends State<HomePage> {
                 : Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24),
                     child: GridView.count(
+                        physics: BouncingScrollPhysics(),
                         controller: scrollController,
                         crossAxisCount: 2,
                         crossAxisSpacing: 12,
