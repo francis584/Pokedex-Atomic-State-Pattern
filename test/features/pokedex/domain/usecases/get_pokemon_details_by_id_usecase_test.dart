@@ -4,7 +4,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:pokedex_egsys/core/error/failure.dart';
 import 'package:pokedex_egsys/features/pokedex/domain/entities/pokemon_details_entity.dart';
 import 'package:pokedex_egsys/features/pokedex/domain/repositories/pokemon_repository.dart';
-import 'package:pokedex_egsys/features/pokedex/domain/usecases/GetPokemonDetailsByIdUsecase.dart';
+import 'package:pokedex_egsys/features/pokedex/domain/usecases/get_pokemon_details_by_id_usecase.dart';
 
 import '../../fixtures/detail_fixtures.dart';
 import '../../fixtures/home_fixtures.dart';

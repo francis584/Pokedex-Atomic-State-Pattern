@@ -2,7 +2,7 @@
 import 'package:asp/asp.dart';
 
 import 'package:pokedex_egsys/core/error/failure.dart';
-import 'package:pokedex_egsys/features/pokedex/domain/usecases/GetPokemonDetailsByIdUsecase.dart';
+import 'package:pokedex_egsys/features/pokedex/domain/usecases/get_pokemon_details_by_id_usecase.dart';
 import 'package:pokedex_egsys/features/pokedex/presenter/atoms/details_atom.dart';
 
 class DetailsReducer extends Reducer {
