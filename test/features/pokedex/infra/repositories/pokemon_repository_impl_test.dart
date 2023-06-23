@@ -6,6 +6,7 @@ import 'package:uno/uno.dart';
 import 'package:pokedex_egsys/core/error/failure.dart';
 import 'package:pokedex_egsys/features/pokedex/domain/entities/pokemon_details_entity.dart';
 import 'package:pokedex_egsys/features/pokedex/domain/entities/pokemon_entity.dart';
+import 'package:pokedex_egsys/features/pokedex/domain/entities/type_entity.dart';
 import 'package:pokedex_egsys/features/pokedex/domain/repositories/pokemon_repository.dart';
 import 'package:pokedex_egsys/features/pokedex/infra/repositories/pokemon_repository_impl.dart';
 
@@ -118,6 +119,42 @@ void main() {
             throwsA(predicate<Failure>((p0) =>
                 p0.message ==
                 'Não foi possível carregar os detalhes do pokemon')));
+      });
+    });
+
+    group('getTypes', () {
+      test('should return a List<TypeEntity>', () async {
+        // ARRANGE
+        when(() => uno.get(
+                  '/type',
+                  params: {'offset': '0', 'limit': '20'},
+                ))
+            .thenAnswer((invocation) async =>
+                MockResponse(data: HomeFixtures.jsonGetTypes));
+
+        // ACT
+        var typesList = await pokemonRepository.getTypes(limit: 20, page: 1);
+
+        // ASSERT
+        expect(typesList, isA<List<TypeEntity>>());
+      });
+      test('should return a Failure when get error', () async {
+        // ARRANGE
+        when(() => uno.get(
+                  '/type',
+                  params: {'offset': '0', 'limit': '20'},
+                ))
+            .thenThrow(
+                Failure(message: 'Não foi possível carregar a lista de tipos'));
+
+        // ACT
+        var typesList = pokemonRepository.getTypes(limit: 20, page: 1);
+
+        // ASSERT
+        await expectLater(
+            typesList,
+            throwsA(predicate<Failure>((p0) =>
+                p0.message == 'Não foi possível carregar a lista de tipos')));
       });
     });
   });
