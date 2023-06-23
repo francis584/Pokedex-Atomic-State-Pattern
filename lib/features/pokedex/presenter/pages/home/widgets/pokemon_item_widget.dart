@@ -26,8 +26,8 @@ class PokemonItemWidget extends StatelessWidget {
         children: [
           Container(
             decoration: BoxDecoration(
-                color:
-                    typeToColorMapper(pokemonEntity.type[0]).withOpacity(0.8),
+                color: typeToColorMapper(pokemonEntity.types[0].name)
+                    .withOpacity(0.8),
                 borderRadius: BorderRadius.circular(16)),
             child: Padding(
               padding: const EdgeInsets.all(8),
@@ -64,8 +64,8 @@ class PokemonItemWidget extends StatelessWidget {
                     children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: pokemonEntity.type
-                            .map((e) => TypeWidget(name: e))
+                        children: pokemonEntity.types
+                            .map((type) => TypeWidget(name: type.name))
                             .toList(),
                       ),
                       Flexible(

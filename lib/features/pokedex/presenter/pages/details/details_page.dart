@@ -56,10 +56,10 @@ class _DetailsPageState extends State<DetailsPage>
         ]);
     final typeToColorMapper = TypeToColorMapper();
     final _colorSelected =
-        typeToColorMapper(detailsPokemonSelected.value!.type[0])
+        typeToColorMapper(detailsPokemonSelected.value!.types[0].name)
             .withOpacity(0.8);
     final _colorTabSelected =
-        typeToColorMapper(detailsPokemonSelected.value!.type[0]);
+        typeToColorMapper(detailsPokemonSelected.value!.types[0].name);
 
     return Scaffold(
       appBar: AppBar(
@@ -143,11 +143,11 @@ class _DetailsPageState extends State<DetailsPage>
                             ),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: pokemon.type
-                                  .map((e) => Padding(
+                              children: pokemon.types
+                                  .map((type) => Padding(
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 4),
-                                        child: TypeWidget(name: e),
+                                        child: TypeWidget(name: type.name),
                                       ))
                                   .toList(),
                             )

@@ -4,10 +4,12 @@ import 'package:pokedex_egsys/core/error/failure.dart';
 import 'package:pokedex_egsys/features/pokedex/domain/entities/pokemon_details_entity.dart';
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:pokedex_egsys/features/pokedex/domain/entities/pokemon_entity.dart';
+import 'package:pokedex_egsys/features/pokedex/domain/entities/type_entity.dart';
 import 'package:pokedex_egsys/features/pokedex/domain/repositories/pokemon_repository.dart';
 import 'package:pokedex_egsys/features/pokedex/infra/mappers/api_to_entity_mapper.dart';
 import 'package:pokedex_egsys/features/pokedex/infra/models/pokemon_details_model.dart';
 import 'package:pokedex_egsys/features/pokedex/infra/models/pokemon_model.dart';
+import 'package:pokedex_egsys/features/pokedex/infra/models/type_model.dart';
 
 class PokemonRepositoryImpl implements PokemonRepository {
   final Uno uno;
@@ -64,6 +66,25 @@ class PokemonRepositoryImpl implements PokemonRepository {
     } catch (e) {
       throw Failure(
           message: 'Não foi possível carregar os detalhes do pokemon');
+    }
+  }
+
+  @override
+  Future<List<TypeEntity>> getTypes(
+      {required int limit, required int page}) async {
+    try {
+      final response = await uno.get(
+        '/type',
+        params: {'offset': '${(page - 1) * limit}', 'limit': '$limit'},
+      );
+
+      final List<TypeEntity> typesList = (response.data['results'] as List)
+          .map((e) => TypeModel.fromMap(e).toEntity())
+          .toList();
+
+      return typesList;
+    } catch (e) {
+      throw Failure(message: 'Não foi possível carregar a lista de tipos');
     }
   }
 }
