@@ -2,9 +2,12 @@
 
 import 'package:flutter/material.dart';
 
+import 'package:doc_widget/doc_widget.dart';
+
 import 'package:pokedex_egsys/features/pokedex/domain/entities/pokemon_details_entity.dart';
 import 'package:pokedex_egsys/features/pokedex/presenter/pages/details/widgets/shimmer_widget.dart';
 
+@docWidget
 class BaseStatsWidget extends StatelessWidget {
   final PokemonDetailsEntity? pokemonDetailsEntity;
   final bool loading;

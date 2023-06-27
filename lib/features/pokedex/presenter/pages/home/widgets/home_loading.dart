@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:shimmer/shimmer.dart';
+import 'package:doc_widget/doc_widget.dart';
 
+@docWidget
 class HomeLoading extends StatelessWidget {
   const HomeLoading({super.key});
 

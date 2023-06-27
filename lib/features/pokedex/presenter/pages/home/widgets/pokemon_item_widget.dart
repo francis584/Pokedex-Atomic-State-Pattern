@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:doc_widget/doc_widget.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shimmer/shimmer.dart';
@@ -9,6 +10,7 @@ import 'package:pokedex_egsys/features/pokedex/domain/entities/pokemon_entity.da
 import 'package:pokedex_egsys/features/pokedex/presenter/atoms/details_atom.dart';
 import 'package:pokedex_egsys/features/pokedex/presenter/pages/home/widgets/type_widget.dart';
 
+@docWidget
 class PokemonItemWidget extends StatelessWidget {
   final PokemonEntity pokemonEntity;
   const PokemonItemWidget({super.key, required this.pokemonEntity});

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'package:doc_widget/doc_widget.dart';
 import 'package:shimmer/shimmer.dart';
 
+@docWidget
 class ShimmerWidget extends StatelessWidget {
   final double width;
   const ShimmerWidget({

@@ -1,9 +1,12 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:doc_widget/doc_widget.dart';
 
 import 'package:pokedex_egsys/features/pokedex/domain/entities/pokemon_details_entity.dart';
 import 'package:pokedex_egsys/features/pokedex/presenter/pages/details/widgets/shimmer_widget.dart';
 
+@docWidget
 class AboutWidget extends StatelessWidget {
   final PokemonDetailsEntity? pokemonDetailsEntity;
   final bool loading;

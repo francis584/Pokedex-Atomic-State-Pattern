@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:doc_widget/doc_widget.dart';
 
+@docWidget
 class SearchPokemonByNameWidget extends StatelessWidget {
   const SearchPokemonByNameWidget({
     super.key,

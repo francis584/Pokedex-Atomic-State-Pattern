@@ -2,7 +2,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:doc_widget/doc_widget.dart';
 
+/// Widget utilizado para exibir erros inesperados
+
+@docWidget
 class HomeError extends StatelessWidget {
   final String error;
   const HomeError({

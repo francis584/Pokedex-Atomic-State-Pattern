@@ -4,7 +4,9 @@ import 'package:asp/asp.dart';
 
 import 'package:pokedex_egsys/core/utils/mappers/color_to_type_mapper.dart';
 import 'package:pokedex_egsys/features/pokedex/presenter/atoms/home_atom.dart';
+import 'package:doc_widget/doc_widget.dart';
 
+@docWidget
 class TypesChoiceChipsWidget extends StatelessWidget {
   const TypesChoiceChipsWidget({
     super.key,

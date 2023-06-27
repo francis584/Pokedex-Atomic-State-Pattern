@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:doc_widget/doc_widget.dart';
 
+@docWidget
 class TypeWidget extends StatelessWidget {
   final String name;
   const TypeWidget({super.key, required this.name});

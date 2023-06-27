@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:doc_widget/doc_widget.dart';
+
+@docWidget
 class DetailsErrorWidget extends StatelessWidget {
   final String message;
   const DetailsErrorWidget({
