@@ -102,13 +102,12 @@ class PokemonRepositoryImpl implements PokemonRepository {
                   .map((e) => e.pokemon)));
         }));
       } else {
-        await Future.wait(types.map((type) async {
-          await uno.get(
-            '/pokemon',
-            params: {'offset': '0', 'limit': '10000'},
-          ).then((value) => value.data['results']
-              .map((e) => pokemonsNamesList.add(e.pokemon)));
-        }));
+        await uno.get(
+          '/pokemon',
+          params: {'offset': '0', 'limit': '10000'},
+        ).then((value) => pokemonsNamesList.addAll(
+            (value.data['results'] as List)
+                .map((e) => PokemonPokemon.fromMap(e))));
       }
 
       if (name.isNotEmpty) {
