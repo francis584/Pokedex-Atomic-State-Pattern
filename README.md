@@ -76,6 +76,9 @@ $ fvm flutter run -d emulator
 
 # Rodar testes
 $ fvm flutter test
+
+# Rodar documentação
+$ fvm flutter run -t lib/doc_widget.dart
 ```
 
 ---
