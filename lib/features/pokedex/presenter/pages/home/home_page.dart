@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:asp/asp.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:pokedex_egsys/features/pokedex/presenter/atoms/home_atom.dart';
 import 'package:pokedex_egsys/features/pokedex/presenter/pages/home/widgets/home_error.dart';
@@ -19,7 +20,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final ScrollController scrollController = ScrollController();
-  final TextEditingController textEditingController = TextEditingController();
   @override
   void initState() {
     super.initState();
@@ -38,6 +38,8 @@ class _HomePageState extends State<HomePage> {
   @override
   void dispose() {
     scrollController.dispose();
+    homeSearchtextEditingController.value.dispose();
+    homeSearchtextEditingController.dispose();
     super.dispose();
   }
 
@@ -69,7 +71,8 @@ class _HomePageState extends State<HomePage> {
               child: Wrap(
                 children: [
                   SearchPokemonByNameWidget(
-                      textEditingController: textEditingController),
+                      textEditingController:
+                          homeSearchtextEditingController.value),
                   TypesChoiceChipsWidget(),
                   Padding(
                     padding: const EdgeInsets.all(24),
@@ -78,15 +81,21 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Expanded(
                           child: OutlinedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              clearSearch();
+                              context.pop();
+                            },
                             child: Text('Limpar'),
-                            style: ButtonStyle(),
                           ),
                         ),
                         SizedBox(width: 24),
                         Expanded(
                             child: ElevatedButton(
-                                onPressed: () {}, child: Text('Buscar'))),
+                                onPressed: () {
+                                  filterPokemons();
+                                  context.pop();
+                                },
+                                child: Text('Buscar'))),
                       ],
                     ),
                   )
@@ -95,6 +104,11 @@ class _HomePageState extends State<HomePage> {
             ),
           );
         });
+  }
+
+  Future<void> _refresh() async {
+    clearSearch();
+    initialfetch();
   }
 
   @override
@@ -135,26 +149,27 @@ class _HomePageState extends State<HomePage> {
         ),
         body: SafeArea(
           child: RefreshIndicator.adaptive(
-            onRefresh: () async => initialfetch(),
-            child: homeError.value.isNotEmpty
-                ? SingleChildScrollView(
-                    child: HomeError(error: homeError.value))
-                : Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24),
-                    child: GridView.count(
-                        physics: BouncingScrollPhysics(),
-                        controller: scrollController,
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 12,
-                        mainAxisSpacing: 12,
-                        children: [
+            onRefresh: _refresh,
+            child: SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
+              controller: scrollController,
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: homeError.value.isNotEmpty
+                  ? HomeError(error: homeError.value)
+                  : GridView.count(
+                      physics: BouncingScrollPhysics(),
+                      shrinkWrap: true,
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 12,
+                      mainAxisSpacing: 12,
+                      children: [
                           ...homePokemonsList
                               .map((e) => PokemonItemWidget(pokemonEntity: e))
                               .toList(),
                           if (homeLoading.value)
                             ...List.generate(8, (index) => HomeLoading()),
                         ]),
-                  ),
+            ),
           ),
         ));
   }
