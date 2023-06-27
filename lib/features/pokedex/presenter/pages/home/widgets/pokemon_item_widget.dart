@@ -68,10 +68,10 @@ class PokemonItemWidget extends StatelessWidget {
                             .map((type) => TypeWidget(name: type.name))
                             .toList(),
                       ),
-                      Flexible(
+                      Expanded(
                           child: Container(
                         width: 100,
-                        height: 100,
+                        height: 70,
                       ))
                     ],
                   )
@@ -100,7 +100,7 @@ class PokemonItemWidget extends StatelessWidget {
                     height: 110,
                     fit: BoxFit.contain,
                     placeholderBuilder: (context) => Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(4.0),
                         child: Shimmer.fromColors(
                             child: Container(
                               decoration: BoxDecoration(
