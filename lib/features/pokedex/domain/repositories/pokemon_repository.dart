@@ -10,6 +10,6 @@ abstract class PokemonRepository {
 
   Future<List<TypeEntity>> getTypes({required int limit, required int page});
 
-  Future<List<PokemonEntity>> GetPokemonsByNameAndTypes(
+  Future<List<PokemonEntity>> getPokemonsByNameAndTypes(
       {required String name, required List<TypeEntity> types});
 }

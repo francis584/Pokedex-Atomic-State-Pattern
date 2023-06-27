@@ -25,7 +25,7 @@ class GetPokemonsByNameAndTypesUsecase
   @override
   Future<List<PokemonEntity>> call(
       GetPokemonsByNameAndTypesParams params) async {
-    return pokemonRepository.GetPokemonsByNameAndTypes(
+    return pokemonRepository.getPokemonsByNameAndTypes(
         name: params.name, types: params.types);
   }
 }

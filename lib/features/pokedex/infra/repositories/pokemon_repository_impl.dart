@@ -90,7 +90,7 @@ class PokemonRepositoryImpl implements PokemonRepository {
   }
 
   @override
-  Future<List<PokemonEntity>> GetPokemonsByNameAndTypes(
+  Future<List<PokemonEntity>> getPokemonsByNameAndTypes(
       {required String name, required List<TypeEntity> types}) async {
     try {
       List<PokemonPokemon> pokemonsNamesList = [];
