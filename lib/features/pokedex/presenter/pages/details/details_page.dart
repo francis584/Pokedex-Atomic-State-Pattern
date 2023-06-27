@@ -101,7 +101,8 @@ class _DetailsPageState extends State<DetailsPage>
                 controller: _pageController,
                 onPageChanged: (value) {
                   final pokemon = homePokemonsList[value];
-                  if (value == (homePokemonsList.length - 3)) {
+                  if (!homeSearchActive.value &&
+                      value == (homePokemonsList.length - 3)) {
                     fetchMore();
                   }
 
