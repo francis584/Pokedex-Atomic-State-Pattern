@@ -31,6 +31,7 @@ analyzer:
   plugins:
     - dart_code_metrics
   exclude:
+    - "**/*.doc_widget.dart"
     - "**/*.g.dart"
     - "**/*.freezed.dart"
     - "test/.test_coverage.dart"
