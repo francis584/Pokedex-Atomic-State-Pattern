@@ -9,6 +9,7 @@ import 'package:pokedex_egsys/features/pokedex/domain/repositories/pokemon_repos
 import 'package:pokedex_egsys/features/pokedex/infra/mappers/api_to_entity_mapper.dart';
 import 'package:pokedex_egsys/features/pokedex/infra/models/pokemon_details_model.dart';
 import 'package:pokedex_egsys/features/pokedex/infra/models/pokemon_model.dart';
+import 'package:pokedex_egsys/features/pokedex/infra/models/pokemons_by_type_model.dart';
 import 'package:pokedex_egsys/features/pokedex/infra/models/type_model.dart';
 
 class PokemonRepositoryImpl implements PokemonRepository {
@@ -85,6 +86,48 @@ class PokemonRepositoryImpl implements PokemonRepository {
       return typesList;
     } catch (e) {
       throw Failure(message: 'Não foi possível carregar a lista de tipos');
+    }
+  }
+
+  @override
+  Future<List<PokemonEntity>> GetPokemonsByNameAndTypes(
+      {required String name, required List<TypeEntity> types}) async {
+    try {
+      List<PokemonPokemon> pokemonsNamesList = [];
+      if (types.isNotEmpty) {
+        await Future.wait(types.map((type) async {
+          await uno.get('/type/${type.name.toLowerCase()}').then((value) =>
+              pokemonsNamesList.addAll(PokemonsByType.fromMap(value.data)
+                  .pokemon
+                  .map((e) => e.pokemon)));
+        }));
+      } else {
+        await Future.wait(types.map((type) async {
+          await uno.get(
+            '/pokemon',
+            params: {'offset': '0', 'limit': '10000'},
+          ).then((value) => value.data['results']
+              .map((e) => pokemonsNamesList.add(e.pokemon)));
+        }));
+      }
+
+      if (name.isNotEmpty) {
+        pokemonsNamesList = pokemonsNamesList
+            .where((element) =>
+                element.name.toLowerCase().contains(name.toLowerCase()))
+            .toList();
+      }
+
+      return await Future.wait(pokemonsNamesList.map((e) async {
+        final pokemonUrl = e.url.split(uno.baseURL).last;
+        final response = await uno.get(pokemonUrl);
+
+        return PokemonModel.fromMap(response.data).toEntity();
+      }));
+    } on UnoError catch (e) {
+      throw Failure(message: e.message);
+    } catch (e) {
+      throw Failure(message: 'Não foi possível carregar a lista de pokemons');
     }
   }
 }
