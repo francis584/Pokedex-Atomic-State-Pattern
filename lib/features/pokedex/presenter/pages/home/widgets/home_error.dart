@@ -30,6 +30,7 @@ class HomeError extends StatelessWidget {
             Text(
               error,
               style: TextStyle(color: Colors.black, fontSize: 16),
+              textAlign: TextAlign.center,
             ),
           ]),
         ],
