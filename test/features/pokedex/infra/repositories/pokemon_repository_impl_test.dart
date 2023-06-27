@@ -157,5 +157,77 @@ void main() {
                 p0.message == 'Não foi possível carregar a lista de tipos')));
       });
     });
+
+    group('getPokemonsByNameAndTypes', () {
+      test('should return a List<PokemonEntity> when only the name is passed',
+          () async {
+        // ARRANGE
+        when(() => uno.get(
+                  '/pokemon',
+                  params: {'offset': '0', 'limit': '10000'},
+                ))
+            .thenAnswer((invocation) async =>
+                MockResponse(data: HomeFixtures.jsonGetPokemons));
+        when(() => uno.get('/pokemon/1/')).thenAnswer((invocation) async =>
+            MockResponse(data: HomeFixtures.mockPokemonMap));
+
+        // ACT
+        var pokemonList = await pokemonRepository
+            .getPokemonsByNameAndTypes(name: 'bulba', types: []);
+
+        // ASSERT
+        expect(pokemonList, isA<List<PokemonEntity>>());
+      });
+      test('should return a List<PokemonEntity> when only the type is passed',
+          () async {
+        // ARRANGE
+        when(() => uno.get(
+                '/type/${HomeFixtures.typeEntitiesList.first.name.toLowerCase()}'))
+            .thenAnswer((invocation) async =>
+                MockResponse(data: HomeFixtures.jsonFightingPokemons));
+        when(() => uno.get('/pokemon/1/')).thenAnswer((invocation) async =>
+            MockResponse(data: HomeFixtures.mockPokemonMap));
+
+        // ACT
+        var pokemonList = await pokemonRepository.getPokemonsByNameAndTypes(
+            name: '', types: [HomeFixtures.typeEntitiesList.first]);
+
+        // ASSERT
+        expect(pokemonList, isA<List<PokemonEntity>>());
+      });
+      test('should return a Failure when get UnoError', () async {
+        // ARRANGE
+        when(() => uno.get(
+                '/type/${HomeFixtures.typeEntitiesList.first.name.toLowerCase()}'))
+            .thenThrow(UnoError('Conection timeout'));
+
+        // ACT
+        var pokemonList = pokemonRepository.getPokemonsByNameAndTypes(
+            name: '', types: [HomeFixtures.typeEntitiesList.first]);
+
+        // ASSERT
+        await expectLater(
+            pokemonList,
+            throwsA(
+                predicate<Failure>((p0) => p0.message == 'Conection timeout')));
+      });
+      test('should return a Failure when get unknown error', () async {
+        // ARRANGE
+        when(() => uno.get(
+                '/type/${HomeFixtures.typeEntitiesList.first.name.toLowerCase()}'))
+            .thenThrow(Exception('certificate error'));
+
+        // ACT
+        var pokemonList = pokemonRepository.getPokemonsByNameAndTypes(
+            name: '', types: [HomeFixtures.typeEntitiesList.first]);
+
+        // ASSERT
+        await expectLater(
+            pokemonList,
+            throwsA(predicate<Failure>((p0) =>
+                p0.message ==
+                'Não foi possível carregar a lista de pokemons')));
+      });
+    });
   });
 }
