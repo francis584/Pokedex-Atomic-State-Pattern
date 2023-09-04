@@ -37,7 +37,7 @@
 
 ## :rocket: Tecnologias
 
-Esse projeto foi desenvolvido como um teste para uma vaga com as seguintes tecnologias:
+Esse projeto foi desenvolvido como uma POC com as seguintes tecnologias:
 
 - [ASP - Atomic State Pattern](https://pub.dev/packages/asp)
 - [Equatable](https://pub.dev/packages/equatable)
